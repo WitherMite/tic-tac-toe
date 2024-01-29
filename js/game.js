@@ -1,4 +1,25 @@
 const game = (function() {
+
+    const turn = (function() {
+        let p1Turn = true;
+        let p2Turn = false;
+
+        function getTurn(p) {
+            if (p = 1) return p1Turn;
+            if (p = 2) return p2Turn;
+        }
+
+        function switchTurn() {
+            [p1Turn, p2Turn] = [p2Turn, p1Turn];
+        }
+
+        function reset() {
+            [p1Turn, p2Turn] = [true, false];
+        }
+
+        return {getTurn, switchTurn, reset};
+    })();
+
     const board = {
         rows: [
             [null, null, null], 
@@ -22,6 +43,10 @@ const game = (function() {
         }
     };
 
+    function getTurn(p) {
+        return turn.getTurn(p);
+    }
+
     function getBoard() {
         return board.rows;
     }
@@ -29,6 +54,7 @@ const game = (function() {
     function markTile(marker, pos) {
         const row = pos[0];
         const col = pos[1];
+
         if (board.rows[row][col] !== null) return "tile is not empty";
         if (0 >= row > 3 && 0 >= col > 3) return "position out of bounds";
             
@@ -36,6 +62,7 @@ const game = (function() {
         board.columns[col][row] = marker;
         board.updateDiagonals();
         
+        turn.switchTurn();
         return checkWin();
     }
 
@@ -53,8 +80,9 @@ const game = (function() {
         });
     }
 
-    function clearBoard() {
+    function reset() {
         const allLines = [board.rows, board.columns, board.diagonals];
+        turn.reset();
 
         allLines.forEach((direction) => {
             direction.forEach((line) => {
@@ -63,5 +91,5 @@ const game = (function() {
             });
         });
     }
-    return {markTile, clearBoard, getBoard};
+    return {markTile, reset, getBoard, getTurn};
 })();
