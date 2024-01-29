@@ -22,6 +22,10 @@ const game = (function() {
         }
     };
 
+    function getBoard() {
+        return board.rows;
+    }
+
     function markTile(marker, pos) {
         const row = pos[0];
         const col = pos[1];
@@ -31,8 +35,22 @@ const game = (function() {
             board.columns[col][row] = marker;
             board.updateDiagonals();
         }
-        console.log(game.board);
-        // checkWin();
+        console.log(board);
+        return checkWin();
+    }
+
+    function checkWin() {
+        const allLines = [board.rows, board.columns, board.diagonals];
+
+        return allLines.some((direction) => {
+            return direction.some((line) => {
+
+                const isWin = line[0] === line[1] && line[1] === line[2];
+                const notNull = line.every((tile) => tile !== null);
+
+                if (isWin && notNull) return true;
+            });
+        });
     }
 
     function clearBoard() {
@@ -40,15 +58,13 @@ const game = (function() {
 
         allLines.forEach((direction) => {
             direction.forEach((line) => {
+
                 line.splice(0, 3, null, null, null);
             });
         });
-        console.log(game.board);
     }
 
-    return {markTile, clearBoard};
+    return {markTile, clearBoard, getBoard};
 })();
-
-game.markTile("O", [0,2]);
 
 
