@@ -4,12 +4,12 @@ const game = (function() {
         let p1Turn = true;
         let p2Turn = false;
 
-        function getTurn(p) {
-            if (p = 1) return p1Turn;
-            if (p = 2) return p2Turn;
+        function ask(player) {
+            if (player === 1) return p1Turn;
+            if (player === 2) return p2Turn;
         }
 
-        function switchTurn() {
+        function change() {
             [p1Turn, p2Turn] = [p2Turn, p1Turn];
         }
 
@@ -17,7 +17,7 @@ const game = (function() {
             [p1Turn, p2Turn] = [true, false];
         }
 
-        return {getTurn, switchTurn, reset};
+        return {ask, change, reset};
     })();
 
     const board = {
@@ -43,8 +43,8 @@ const game = (function() {
         }
     };
 
-    function getTurn(p) {
-        return turn.getTurn(p);
+    function askTurn(player) {
+        return turn.ask(player);
     }
 
     function getBoard() {
@@ -62,7 +62,7 @@ const game = (function() {
         board.columns[col][row] = marker;
         board.updateDiagonals();
         
-        turn.switchTurn();
+        turn.change();
         return checkWin();
     }
 
@@ -91,5 +91,5 @@ const game = (function() {
             });
         });
     }
-    return {markTile, reset, getBoard, getTurn};
+    return {markTile, reset, getBoard, askTurn};
 })();
