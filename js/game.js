@@ -63,13 +63,13 @@ const game = (function() {
         board.updateDiagonals();
         
         turn.change();
-        return checkWin();
+        return checkEnd();
     }
 
-    function checkWin() {
+    function checkEnd() {
         const allLines = [board.rows, board.columns, board.diagonals];
 
-        return allLines.some((direction) => {
+        const pWon = allLines.some((direction) => {
             return direction.some((line) => {
 
                 const isWin = line[0] === line[1] && line[1] === line[2];
@@ -78,6 +78,15 @@ const game = (function() {
                 if (isWin && notNull) return true;
             });
         });
+        if (pWon) return "Win";
+
+        const gameTie = allLines.every((direction) => {
+            return direction.every((line) => {
+
+                return line.every((tile) => tile !== null);
+            });
+        });
+        if (gameTie) return "Tie";
     }
 
     function reset() {
