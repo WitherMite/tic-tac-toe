@@ -29,14 +29,13 @@ const game = (function() {
     function markTile(marker, pos) {
         const row = pos[0];
         const col = pos[1];
-        if (board.rows[row][col] !== null) return "ERROR";
-
-        if (0 <= row < 3 && 0 <= col < 3) {
-            board.rows[row][col] = marker;
-            board.columns[col][row] = marker;
-            board.updateDiagonals();
-        }
-        console.log(board);
+        if (board.rows[row][col] !== null) return "tile is not empty";
+        if (0 >= row > 3 && 0 >= col > 3) return "position out of bounds";
+            
+        board.rows[row][col] = marker;
+        board.columns[col][row] = marker;
+        board.updateDiagonals();
+        
         return checkWin();
     }
 
@@ -64,8 +63,5 @@ const game = (function() {
             });
         });
     }
-
     return {markTile, clearBoard, getBoard};
 })();
-
-
