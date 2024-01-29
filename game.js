@@ -29,6 +29,7 @@ const game = (function() {
     function markTile(marker, pos) {
         const row = pos[0];
         const col = pos[1];
+        if (board.rows[row][col] !== null) return "ERROR";
 
         if (0 <= row < 3 && 0 <= col < 3) {
             board.rows[row][col] = marker;
