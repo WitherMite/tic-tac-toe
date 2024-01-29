@@ -67,38 +67,27 @@ const game = (function() {
     }
 
     function checkEnd() {
-        const allLines = [board.rows, board.columns, board.diagonals];
+        const allLines = [...board.rows, ...board.columns, ...board.diagonals];
 
-        const pWon = allLines.some((direction) => {
-            return direction.some((line) => {
+        const pWon = allLines.some((line) => {
+            const isWin = line[0] === line[1] && line[1] === line[2];
+            const notNull = line.every((tile) => tile !== null);
 
-                const isWin = line[0] === line[1] && line[1] === line[2];
-                const notNull = line.every((tile) => tile !== null);
-
-                if (isWin && notNull) return true;
-            });
+            if (isWin && notNull) return true;
         });
         if (pWon) return "Win";
 
-        const gameTie = allLines.every((direction) => {
-            return direction.every((line) => {
-
-                return line.every((tile) => tile !== null);
-            });
+        const gameTie = allLines.every((line) => {
+            return line.every((tile) => tile !== null);
         });
         if (gameTie) return "Tie";
     }
 
     function reset() {
-        const allLines = [board.rows, board.columns, board.diagonals];
+        const allLines = [...board.rows, ...board.columns, ...board.diagonals];
         turn.reset();
 
-        allLines.forEach((direction) => {
-            direction.forEach((line) => {
-
-                line.splice(0, 3, null, null, null);
-            });
-        });
+        allLines.forEach((line) => line.splice(0, 3, null, null, null));
     }
     return {markTile, reset, getBoard, askTurn};
 })();
