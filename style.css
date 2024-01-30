@@ -2,6 +2,7 @@
     --primary-color: white;
     --border-color: black;
     --tile-color: white;
+    --tile-size: min(30svw, 25svh);
 }
 
 * {
@@ -22,14 +23,13 @@ body {
 .game-board {
     background-color: var(--border-color);
     display: grid;
-    grid-template-columns: repeat(3, min(30svw, 25svh));
-    grid-template-rows: repeat(3, min(30svw, 25svh));
+    grid-template-columns: repeat(3, var(--tile-size));
+    grid-template-rows: repeat(3, var(--tile-size));
     gap: max(1px, .5svh);
 }
 
 .game-tile {
-    height: 100%;
-    font-size: 25svw;
+    font-size: var(--tile-size);
     background-color: var(--tile-color);
     display: grid;
     place-content: center;

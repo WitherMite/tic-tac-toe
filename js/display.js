@@ -3,11 +3,13 @@ const display = (function() {
   const domTiles = domBoard.querySelectorAll(".game-tile");
 
   function startPlay() {
+    // check players are valid first
+
     domTiles.forEach((tile) => {
       tile.addEventListener("click", playerClick);
     })
   }
-  startPlay();
+  startPlay(); // temp
   
   function playerClick() {
     const [row , col] = [
