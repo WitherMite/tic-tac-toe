@@ -2,16 +2,15 @@ const game = (function() {
 
   const turn = {
     p1: true,
-    p2: false,
     get() {
       if (turn.p1) return "X"; // player1;
       return "O"; // player2;
     },
     change() {
-      [turn.p1, turn.p2] = [turn.p2, turn.p1];
+      turn.p1 = !turn.p1;
     },
     reset() {
-      [turn.p1, turn.p2] = [true, false];
+      turn.p1 = true;
     }
   };
 
