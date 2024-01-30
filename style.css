@@ -1,3 +1,9 @@
+:root {
+    --primary-color: white;
+    --border-color: black;
+    --tile-color: white;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,20 +13,24 @@
 body {
     height: 100svh;
     display: flex;
+    background-color: var(--primary-color);
     flex-wrap: wrap; /* allows align-content */
     justify-content: center;
     align-content: center;
 }
 
 .game-board {
-    background-color: black;
+    background-color: var(--border-color);
     display: grid;
-    grid-template-columns: repeat(3, 25svh);
-    grid-template-rows: repeat(3, 25svh);
+    grid-template-columns: repeat(3, min(30svw, 25svh));
+    grid-template-rows: repeat(3, min(30svw, 25svh));
     gap: max(1px, .5svh);
 }
 
 .game-tile {
-    size: 100%;
-    background-color: white;
+    height: 100%;
+    font-size: 25svw;
+    background-color: var(--tile-color);
+    display: grid;
+    place-content: center;
 }
