@@ -5,8 +5,8 @@ const game = (function() {
     let p2Turn = false;
 
     function get() {
-      if (p1Turn) return "X"; // player1.mark;
-      if (p2Turn) return "O"; // player2.mark;
+      if (p1Turn) return "X"; // player1;
+      if (p2Turn) return "O"; // player2;
     }
 
     function change() {
@@ -52,17 +52,18 @@ const game = (function() {
     const outOfBounds = row < 0 || 3 < row || col < 0 || 3 < col;
     if (notEmpty || outOfBounds) return;
 
-    const marker = turn.get();
+    // const player = turn.get();
+    const marker = turn.get(); // player.marker
     board.rows[row][col] = marker;
     board.columns[col][row] = marker;
     board.updateDiagonals();
     display.update();
 
     turn.change();
-    return checkEnd();
+    return checkEnd(marker); // (player.name);
   }
 
-  function checkEnd() {
+  function checkEnd(player) {
     const allLines = [...board.rows, ...board.columns, ...board.diagonals];
 
     const pWon = allLines.some((line) => {
@@ -70,7 +71,7 @@ const game = (function() {
       const notNull = line.every((tile) => tile !== null);
       if (isWin && notNull) return true;
     });
-    if (pWon) return "Win";
+    if (pWon) return `${player} wins`;
 
     const gameTie = allLines.every((line) => {
       return line.every((tile) => tile !== null);
