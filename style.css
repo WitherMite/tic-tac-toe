@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100svh;
+    display: flex;
+    flex-wrap: wrap; /* allows align-content */
+    justify-content: center;
+    align-content: center;
+}
+
+.game-board {
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(3, 25svh);
+    grid-template-rows: repeat(3, 25svh);
+    gap: max(1px, .5svh);
+}
+
+.game-tile {
+    size: 100%;
+    background-color: white;
+}
