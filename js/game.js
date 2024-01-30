@@ -2,7 +2,7 @@ const game = (function() {
 
   const turn = {
     p1: true,
-    get() {
+    getPlayer() {
       if (turn.p1) return "X"; // player1;
       return "O"; // player2;
     },
@@ -15,27 +15,21 @@ const game = (function() {
   };
 
   const board = {
-    rows: [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
-    ],
-    columns: [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
-    ],
-    diagonals: [
-      [null, null, null],
-      [null, null, null]
-    ],
+    rows: [ [], [], [] ],
+    columns: [ [], [], [] ],
+    diagonals: [ [], [] ],
     updateDiagonals() {
       board.diagonals = [
         [board.rows[0][0], board.rows[1][1], board.rows[2][2]],
         [board.rows[0][2], board.rows[1][1], board.rows[2][0]]
       ];
+    },
+    nullify() {
+      const allLines = [...board.rows, ...board.columns, ...board.diagonals];
+      allLines.forEach((line) => line.splice(0, 3, null, null, null));
     }
   };
+  board.nullify();
 
   function getBoard() {
     return board.rows;
@@ -46,8 +40,8 @@ const game = (function() {
     const outOfBounds = row < 0 || 3 < row || col < 0 || 3 < col;
     if (notEmpty || outOfBounds) return;
 
-    // const player = turn.get();
-    const marker = turn.get(); // player.marker
+    // const player = turn.getPlayer();
+    const marker = turn.getPlayer(); // player.marker
     board.rows[row][col] = marker;
     board.columns[col][row] = marker;
     board.updateDiagonals();
@@ -74,8 +68,7 @@ const game = (function() {
   }
 
   function reset() {
-    const allLines = [...board.rows, ...board.columns, ...board.diagonals];
-    allLines.forEach((line) => line.splice(0, 3, null, null, null));
+    board.nullify();
     display.update();
     turn.reset();
     display.startPlay();
