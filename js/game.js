@@ -43,20 +43,16 @@ const game = (function() {
     }
   };
 
-  function getTurn() {
-    return turn.get();
-  }
-
   function getBoard() {
     return board.rows;
   }
 
-  function markTile(marker, pos) {
-    const [row, col] = pos;
+  function markTile(row, col) {
     const notEmpty = board.rows[row][col] !== null;
-    const outOfBounds = 0 > row || row > 3 || 0 > col || col > 3;
+    const outOfBounds = row < 0 || 3 < row || col < 0 || 3 < col;
     if (notEmpty || outOfBounds) return;
 
+    const marker = turn.get();
     board.rows[row][col] = marker;
     board.columns[col][row] = marker;
     board.updateDiagonals();
@@ -89,5 +85,5 @@ const game = (function() {
     turn.reset();
     display.startPlay();
   }
-  return {markTile, reset, getBoard, getTurn};
+  return {markTile, reset, getBoard};
 })();

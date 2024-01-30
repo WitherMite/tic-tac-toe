@@ -10,13 +10,12 @@ const display = (function() {
   startPlay();
   
   function playerClick() {
-    const turn = game.getTurn();
     const [row , col] = [
       Number(this.dataset.row),
       Number(this.dataset.col)
     ];
 
-    const result = game.markTile(turn, [row, col]);
+    const result = game.markTile(row, col);
     console.log(result);
     if (result) stopPlay();
   }
