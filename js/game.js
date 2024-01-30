@@ -85,7 +85,9 @@ const game = (function() {
   function reset() {
     const allLines = [...board.rows, ...board.columns, ...board.diagonals];
     allLines.forEach((line) => line.splice(0, 3, null, null, null));
+    display.update();
     turn.reset();
+    display.startPlay();
   }
   return {markTile, reset, getBoard, getTurn};
 })();
