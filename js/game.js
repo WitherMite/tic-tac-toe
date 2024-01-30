@@ -37,7 +37,7 @@ const game = (function() {
 
   function markTile(row, col) {
     const notEmpty = board.rows[row][col] !== null;
-    const outOfBounds = row < 0 || 3 < row || col < 0 || 3 < col;
+    const outOfBounds = row < 0 || 2 < row || col < 0 || 2 < col;
     if (notEmpty || outOfBounds) return;
 
     // const player = turn.getPlayer();
