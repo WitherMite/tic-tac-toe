@@ -1,24 +1,19 @@
 const game = (function() {
 
-  const turn = (function() {
-    let p1Turn = true;
-    let p2Turn = false;
-
-    function get() {
-      if (p1Turn) return "X"; // player1;
-      if (p2Turn) return "O"; // player2;
+  const turn = {
+    p1: true,
+    p2: false,
+    get() {
+      if (turn.p1) return "X"; // player1;
+      return "O"; // player2;
+    },
+    change() {
+      [turn.p1, turn.p2] = [turn.p2, turn.p1];
+    },
+    reset() {
+      [turn.p1, turn.p2] = [true, false];
     }
-
-    function change() {
-      [p1Turn, p2Turn] = [p2Turn, p1Turn];
-    }
-
-    function reset() {
-      [p1Turn, p2Turn] = [true, false];
-    }
-
-    return {get, change, reset};
-  })();
+  };
 
   const board = {
     rows: [
