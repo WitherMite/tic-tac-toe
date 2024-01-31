@@ -67,11 +67,11 @@ const game = (function() {
     if (gameTie) return "Tie";
   }
 
-  function reset() {
+  function set() {
     board.nullify();
     display.update();
     turn.reset();
     display.startPlay();
   }
-  return {markTile, reset, getBoard};
+  return {markTile, set, getBoard};
 })();

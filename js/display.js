@@ -1,5 +1,8 @@
 const display = (function() {
   const domTiles = document.querySelectorAll(".game-tile");
+  const startBtn = document.querySelector(".start-btn");
+
+  startBtn.addEventListener("click", game.set);
 
   function startPlay() {
     // check players are valid first
@@ -8,7 +11,6 @@ const display = (function() {
       tile.addEventListener("click", playerClick);
     })
   }
-  startPlay(); // temp
   
   function playerClick() {
     const [row , col] = [
@@ -33,5 +35,5 @@ const display = (function() {
     domTiles.forEach((tile) => tile.removeEventListener("click", playerClick));
   }
 
-  return {startPlay, update, stopPlay};
+  return {startPlay, update};
 })();
