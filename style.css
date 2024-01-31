@@ -2,7 +2,7 @@
     --primary-color: white;
     --border-color: black;
     --tile-color: white;
-    --tile-size: min(30svw, 25svh);
+    --tile-size: min(20svw, 20svh);
 }
 
 * {
@@ -12,7 +12,19 @@
 }
 
 body {
+    padding: 2.5rem;
     height: 100svh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.game-results {
+    text-align: center;
+}
+
+.board-container {
+    grid-column: 2;
     display: flex;
     background-color: var(--primary-color);
     flex-wrap: wrap; /* allows align-content */
@@ -21,6 +33,7 @@ body {
 }
 
 .game-board {
+    height: 100%;
     background-color: var(--border-color);
     display: grid;
     grid-template-columns: repeat(3, var(--tile-size));
@@ -33,4 +46,11 @@ body {
     background-color: var(--tile-color);
     display: grid;
     place-content: center;
+}
+
+.player-ui {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    place-items: center;
 }

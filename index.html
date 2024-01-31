@@ -7,19 +7,51 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1 class="game-results">gdsfsdgdgf</h1>
+  
+  <div class="board-container">
+    <div class="game-board">
+      <div class="game-tile" data-row="0" data-col="0"></div>
+      <div class="game-tile" data-row="0" data-col="1"></div>
+      <div class="game-tile" data-row="0" data-col="2"></div>
+      <div class="game-tile" data-row="1" data-col="0"></div>
+      <div class="game-tile" data-row="1" data-col="1"></div>
+      <div class="game-tile" data-row="1" data-col="2"></div>
+      <div class="game-tile" data-row="2" data-col="0"></div>
+      <div class="game-tile" data-row="2" data-col="1"></div>
+      <div class="game-tile" data-row="2" data-col="2"></div>
+    </div>
+  </div>
 
-  <div class="game-board">
-    <div class="game-tile" data-row="0" data-col="0"></div>
-    <div class="game-tile" data-row="0" data-col="1"></div>
-    <div class="game-tile" data-row="0" data-col="2"></div>
+  <div class="player-ui">
+    <form action="">
+      <h2>Player 1:</h2>
+      <div class="input-container">
+        <label for="">Name:</label>
+        <input type="text">
+      </div>
+      
+      <div class="input-container">
+        <label for="">Marker:</label>
+        <input type="text">
+      </div>
+    </form>
 
-    <div class="game-tile" data-row="1" data-col="0"></div>
-    <div class="game-tile" data-row="1" data-col="1"></div>
-    <div class="game-tile" data-row="1" data-col="2"></div>
+    <button>Start Game</button>
 
-    <div class="game-tile" data-row="2" data-col="0"></div>
-    <div class="game-tile" data-row="2" data-col="1"></div>
-    <div class="game-tile" data-row="2" data-col="2"></div>
+    <form action="">
+      <h2>Player 2:</h2>
+      <div class="input-container">
+        <label for="">Name:</label>
+        <input type="text">
+      </div>
+      
+      <div class="input-container">
+        <label for="">Marker:</label>
+        <input type="text">
+      </div>
+    </form>
+
   </div>
   
   <script src="js/game.js"></script>
