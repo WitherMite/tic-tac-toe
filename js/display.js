@@ -1,6 +1,5 @@
 const display = (function() {
-  const domBoard = document.querySelector(".game-board");
-  const domTiles = domBoard.querySelectorAll(".game-tile");
+  const domTiles = document.querySelectorAll(".game-tile");
 
   function startPlay() {
     // check players are valid first

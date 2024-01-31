@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Tic-Tac-Toe</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,31 +25,33 @@
 
   <div class="player-ui">
     <form action="">
-      <h2>Player 1:</h2>
+      <h2 class="player1-name-display">Player 1:</h2>
       <div class="input-container">
-        <label for="">Name:</label>
-        <input type="text">
+        <label for="p1-name">Name:</label>
+        <input type="text" id="p1-name">
       </div>
       
       <div class="input-container">
-        <label for="">Marker:</label>
-        <input type="text">
+        <label for="p1-marker">Marker:</label>
+        <input type="text" id="p1-marker" maxlength="1">
       </div>
+      <button type="submit" data-player="1">Set name/marker</button>
     </form>
 
-    <button>Start Game</button>
+    <button type="button" class="start-btn">Start New Game</button>
 
     <form action="">
-      <h2>Player 2:</h2>
+      <h2 class="player2-name-display">Player 2:</h2>
       <div class="input-container">
-        <label for="">Name:</label>
-        <input type="text">
+        <label for="p2-name">Name:</label>
+        <input type="text" id="p2-name">
       </div>
       
       <div class="input-container">
-        <label for="">Marker:</label>
-        <input type="text">
+        <label for="p2-marker">Marker:</label>
+        <input type="text" id="p2-marker" maxlength="1">
       </div>
+      <button type="submit" data-player="2">Set name/marker</button>
     </form>
 
   </div>
