@@ -8,9 +8,11 @@ const game = (function() {
     },
     change() {
       turn.p1 = !turn.p1;
+      display.changeHighlight();
     },
     reset() {
       turn.p1 = true;
+      display.changeHighlight(true);
     }
   };
 
@@ -46,7 +48,6 @@ const game = (function() {
     board.columns[col][row] = marker;
     board.updateDiagonals();
     display.update();
-    turn.change();
 
     return checkEnd(players.getPlayerName(player));
   }
@@ -59,10 +60,12 @@ const game = (function() {
       const notNull = line.every((tile) => tile !== null);
       if (isWin && notNull) return true;
     });
-    if (pWon) return `${player} wins!`;
+    if (pWon) return `${player} Wins!`;
 
     const gameTie = allLines.every((line) => line.every((tile) => tile !== null));
-    if (gameTie) return "Tie";
+    if (gameTie) return "Game Tied!";
+    
+    turn.change();
   }
 
   function reset() {

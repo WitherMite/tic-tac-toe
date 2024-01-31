@@ -26,6 +26,7 @@ const display = (function() {
   }
 
   function startPlay() {
+    resultDisplay.textContent = "Tic-Tac-Toe";
     domTiles.forEach((tile) => tile.addEventListener("click", playerClick));
   }
   
@@ -53,5 +54,18 @@ const display = (function() {
     });
   }
 
-  return {startPlay, update};
+  function changeHighlight(reset) {
+    const p1Form = document.querySelector(`#p1-form`);
+    const p2Form = document.querySelector(`#p2-form`);
+
+    if (reset) {
+      p1Form.classList.add("highlight");
+      p2Form.classList.remove("highlight");
+      return;
+    }
+    p1Form.classList.toggle("highlight");
+    p2Form.classList.toggle("highlight");
+  }
+
+  return {startPlay, update, changeHighlight};
 })();

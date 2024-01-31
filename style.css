@@ -54,3 +54,7 @@ body {
     gap: 2rem;
     place-items: center;
 }
+
+.highlight {
+    outline: solid max(1px, .333svh) yellow;
+}
