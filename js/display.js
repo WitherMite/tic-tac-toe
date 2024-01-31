@@ -3,6 +3,8 @@ const display = (function() {
   const playerBtns = document.querySelectorAll("form > button");
   const startBtn = document.querySelector(".start-btn");
   const resultDisplay = document.querySelector(".game-results");
+  const p1Form = document.querySelector(`#p1-form`);
+  const p2Form = document.querySelector(`#p2-form`);
 
   startBtn.addEventListener("click", game.reset);
   playerBtns.forEach(btn => btn.addEventListener("click", sendPlayerInfo));
@@ -55,9 +57,6 @@ const display = (function() {
   }
 
   function changeHighlight(reset) {
-    const p1Form = document.querySelector(`#p1-form`);
-    const p2Form = document.querySelector(`#p2-form`);
-
     if (reset) {
       p1Form.classList.add("highlight");
       p2Form.classList.remove("highlight");
