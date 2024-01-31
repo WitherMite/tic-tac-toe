@@ -56,8 +56,8 @@ const display = (function() {
     });
   }
 
-  function changeHighlight(reset) {
-    if (reset) {
+  function changeHighlight(p1turn) {
+    if (p1turn) {
       p1Form.classList.add("highlight");
       p2Form.classList.remove("highlight");
       return;

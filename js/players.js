@@ -28,7 +28,7 @@ const players = (() => {
   }
 
   function setPlayerMark(id, str) {
-    game.set();
+    game.reset();
     if (id === "p1") return p1.setMarker(str);
     if (id === "p2") return p2.setMarker(str);
   }
