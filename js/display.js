@@ -63,8 +63,8 @@ const display = (function() {
       p2Form.classList.remove("highlight");
       return;
     }
-    p1Form.classList.toggle("highlight");
-    p2Form.classList.toggle("highlight");
+    p1Form.classList.remove("highlight");
+    p2Form.classList.add("highlight");
   }
 
   return {startPlay, update, changeHighlight};

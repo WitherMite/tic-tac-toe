@@ -8,7 +8,7 @@ const game = (function() {
     },
     change() {
       turn.p1 = !turn.p1;
-      display.changeHighlight();
+      display.changeHighlight(turn.p1);
     },
     reset() {
       turn.p1 = true;
@@ -64,7 +64,7 @@ const game = (function() {
 
     const gameTie = allLines.every((line) => line.every((tile) => tile !== null));
     if (gameTie) return "Game Tied!";
-    
+
     turn.change();
   }
 
