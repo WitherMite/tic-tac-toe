@@ -10,26 +10,22 @@ const display = (function() {
     e.preventDefault();
     const player = this.dataset.player;
     const form = document.querySelector(`#${player}-form`);
-    const pName = document.querySelector(`#${player}-name`).value;
-    const pMarker = document.querySelector(`#${player}-marker`).value;
+    const name = document.querySelector(`#${player}-name`).value;
+    const marker = document.querySelector(`#${player}-marker`).value;
 
-    console.table([pName, pMarker]);
+    console.table([name, marker]);
     form.reset();
 
-    if (pName) {
+    if (name) {
       const nameDisplay = document.querySelector(`.${player}-display-name`);
-      nameDisplay.textContent = pName + ":";
-      // send player name
+      nameDisplay.textContent = name + ":";
+      players.setPlayerName(player, name);
     } 
-    if (pMarker) {} // send player marker
+    if (marker) players.setPlayerMark(player, marker);
   }
 
   function startPlay() {
-    // check players are valid first
-
-    domTiles.forEach((tile) => {
-      tile.addEventListener("click", playerClick);
-    })
+    domTiles.forEach((tile) => tile.addEventListener("click", playerClick));
   }
   
   function playerClick() {

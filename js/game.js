@@ -2,9 +2,9 @@ const game = (function() {
 
   const turn = {
     p1: true,
-    getPlayer() {
-      if (turn.p1) return "X"; // player1;
-      return "O"; // player2;
+    check() {
+      if (turn.p1) return "p1";
+      return "p2";
     },
     change() {
       turn.p1 = !turn.p1;
@@ -40,15 +40,17 @@ const game = (function() {
     const outOfBounds = row < 0 || 2 < row || col < 0 || 2 < col;
     if (notEmpty || outOfBounds) return;
 
-    // const player = turn.getPlayer();
-    const marker = turn.getPlayer(); // player.marker
+    const player = turn.check();
+    const marker = players.getPlayerMark(player);
     board.rows[row][col] = marker;
     board.columns[col][row] = marker;
     board.updateDiagonals();
     display.update();
-
     turn.change();
-    return checkEnd(marker); // (player.name);
+
+    const name = players.getPlayerName(player);
+    if (name) return checkEnd(name);
+    return checkEnd(marker);
   }
 
   function checkEnd(player) {
