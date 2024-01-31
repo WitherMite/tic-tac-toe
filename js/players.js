@@ -1,8 +1,8 @@
 const players = (() => {
 
-  function makePlayer(marker) {
-    let playerName = null;
+  function makePlayer(marker, name) {
     let playerMark = marker;
+    let playerName = name;
     
     const getName = () => playerName;
     const setName = (str) => playerName = str;
@@ -15,7 +15,7 @@ const players = (() => {
     return {getName, setName, getMarker, setMarker};
   }
 
-  const [p1, p2] = [makePlayer("X"), makePlayer("O")];
+  const [p1, p2] = [makePlayer("X", "Player 1"), makePlayer("O", "Player 2")];
 
   function setPlayerName(id, str) {
     if (id === "p1") return p1.setName(str);

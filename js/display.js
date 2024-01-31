@@ -2,8 +2,9 @@ const display = (function() {
   const domTiles = document.querySelectorAll(".game-tile");
   const playerBtns = document.querySelectorAll("form > button");
   const startBtn = document.querySelector(".start-btn");
+  const resultDisplay = document.querySelector(".game-results");
 
-  startBtn.addEventListener("click", game.set);
+  startBtn.addEventListener("click", game.reset);
   playerBtns.forEach(btn => btn.addEventListener("click", sendPlayerInfo));
 
   function sendPlayerInfo(e) {
@@ -36,10 +37,11 @@ const display = (function() {
 
     const result = game.markTile(row, col);
     console.log(result);
-    if (result) stopPlay();
+    if (result) stopPlay(result);
   }
 
-  function stopPlay() {
+  function stopPlay(msg) {
+    resultDisplay.textContent = msg;
     domTiles.forEach((tile) => tile.removeEventListener("click", playerClick));
   }
 

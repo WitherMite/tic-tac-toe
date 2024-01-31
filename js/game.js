@@ -48,9 +48,7 @@ const game = (function() {
     display.update();
     turn.change();
 
-    const name = players.getPlayerName(player);
-    if (name) return checkEnd(name);
-    return checkEnd(marker);
+    return checkEnd(players.getPlayerName(player));
   }
 
   function checkEnd(player) {
@@ -61,19 +59,17 @@ const game = (function() {
       const notNull = line.every((tile) => tile !== null);
       if (isWin && notNull) return true;
     });
-    if (pWon) return `${player} wins`;
+    if (pWon) return `${player} wins!`;
 
-    const gameTie = allLines.every((line) => {
-      return line.every((tile) => tile !== null);
-    });
+    const gameTie = allLines.every((line) => line.every((tile) => tile !== null));
     if (gameTie) return "Tie";
   }
 
-  function set() {
+  function reset() {
     board.nullify();
     display.update();
     turn.reset();
     display.startPlay();
   }
-  return {markTile, set, getBoard};
+  return {markTile, reset, getBoard};
 })();
