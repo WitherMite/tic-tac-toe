@@ -28,9 +28,15 @@ const players = (() => {
   }
 
   function setPlayerMark(id, str) {
-    game.reset();
-    if (id === "p1") return p1.setMarker(str);
-    if (id === "p2") return p2.setMarker(str);
+    const [mark1, mark2] = [p1.getMarker(), p2.getMarker()];
+    if (id === "p1" && str !== mark2) {
+      game.reset();
+      return p1.setMarker(str);
+    }
+    if (id === "p2" && str !== mark1) {
+      game.reset();
+      return p2.setMarker(str);
+    } alert("Players can not use the same marker.");
   }
 
   function getPlayerMark(id) {
