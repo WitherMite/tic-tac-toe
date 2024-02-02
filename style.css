@@ -1,5 +1,6 @@
 :root {
     --primary-color: white;
+    --secondary-color: lightgrey;
     --border-color: black;
     --tile-color: white;
     --tile-size: min(20svw, 20svh);
@@ -27,9 +28,7 @@ body {
     grid-column: 2;
     display: flex;
     background-color: var(--primary-color);
-    flex-wrap: wrap; /* allows align-content */
     justify-content: center;
-    align-content: center;
 }
 
 .game-board {
