@@ -6,7 +6,7 @@
     --hightlight-color: rgb(230, 230, 230);
     --highlight-outline-color: grey;
     --input-border-color: grey;
-    --gridline-color: black;
+    --gridline-color: lightgrey;
     --gridline-width: max(1px, .5svh);
     --tile-color: white;
     --tile-size: min(17svw, 17svh);
