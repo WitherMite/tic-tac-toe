@@ -5,6 +5,7 @@
     --secondary-color: lightgrey;
     --hightlight-color: rgb(230, 230, 230);
     --highlight-border-color: grey;
+    --input-border-color: grey;
     --gridline-color: black;
     --gridline-width: max(1px, .5svh);
     --tile-color: white;
@@ -13,7 +14,6 @@
         calc(var(--tile-size) * 3) + 
         calc(var(--gridline-width) * 2)
     );
-    --input-border-color: grey;
 }
 
 * {
@@ -34,8 +34,12 @@ body {
 }
 
 .game-results {
-    width: 40svw;
-    padding: 2svw;
+    width: calc(
+        var(--board-size) - calc(
+            var(--tile-size) / 2
+        )
+    );
+    padding: 1.5rem;
     background-color: var(--secondary-color);
     border-radius: 16px;
     text-align: center;
