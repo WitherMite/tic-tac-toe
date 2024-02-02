@@ -1,9 +1,14 @@
 :root {
     --primary-color: white;
     --secondary-color: lightgrey;
-    --border-color: black;
+    --gridline-color: black;
+    --gridline-width: max(1px, .5svh);
     --tile-color: white;
-    --tile-size: min(20svw, 20svh);
+    --tile-size: min(17svw, 17svh);
+    --board-size: calc(
+        calc(var(--tile-size) * 3) + 
+        calc(var(--gridline-width) * 2)
+    );
 }
 
 * {
@@ -17,15 +22,21 @@ body {
     height: 100svh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
 }
 
 .game-results {
+    width: 40svw;
+    padding: 2svw;
+    background-color: var(--secondary-color);
+    border-radius: 16px;
     text-align: center;
 }
 
 .board-container {
-    grid-column: 2;
+    position: relative;
+    width: var(--board-size);
     display: flex;
     background-color: var(--primary-color);
     justify-content: center;
@@ -33,18 +44,28 @@ body {
 
 .game-board {
     height: 100%;
-    background-color: var(--border-color);
+    background-color: var(--gridline-color);
+    border-radius: 5%;
     display: grid;
     grid-template-columns: repeat(3, var(--tile-size));
     grid-template-rows: repeat(3, var(--tile-size));
-    gap: max(1px, .5svh);
+    gap: var(--gridline-width);
 }
 
 .game-tile {
     font-size: var(--tile-size);
     background-color: var(--tile-color);
+    border-radius: 5%;
     display: grid;
     place-content: center;
+}
+
+.board-border {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: max(2px, 1svh) solid var(--secondary-color);
+    border-radius: 5%;
 }
 
 .player-ui {
