@@ -11,8 +11,9 @@
     --tile-color: white;
     --tile-size: min(17svw, 17svh);
     --board-size: calc(
-        calc(var(--tile-size) * 3) + 
-        calc(var(--gridline-width) * 2)
+        calc(var(--tile-size) * 3) + calc(
+            var(--gridline-width) * 2
+        )
     );
 }
 
@@ -83,7 +84,7 @@ body {
 }
 
 .player-ui {
-    width: 100%;
+    width: min(100%, calc(var(--board-size) * 2.25));
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
