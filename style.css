@@ -62,6 +62,7 @@ body {
 
 .board-border {
     position: absolute;
+    pointer-events: none;
     height: 100%;
     width: 100%;
     border: max(2px, 1svh) solid var(--secondary-color);
