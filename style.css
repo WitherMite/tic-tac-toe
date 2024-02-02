@@ -69,6 +69,7 @@ body {
 }
 
 .player-ui {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -77,10 +78,10 @@ body {
 }
 
 form {
-    flex: 2 1 auto;
+    flex: auto;
     padding: 2rem;
     min-width: min-content;
-    max-width: 33svw;
+    max-width: min(33svw, 350px);
     background-color: var(--secondary-color);
     border-radius: 16px;
     display: flex;
@@ -89,7 +90,8 @@ form {
 }
 
 .btn-container {
-    flex: 1 2 auto;
+    margin: auto;
+    flex: auto;
     display: flex;
     justify-content: center;
 }
