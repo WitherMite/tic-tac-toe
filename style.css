@@ -48,10 +48,52 @@ body {
 }
 
 .player-ui {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
-    place-items: center;
+    justify-items: flex-start;
+    align-items: center;
+}
+
+form {
+    flex: 2 1 auto;
+    padding: 2rem;
+    min-width: min-content;
+    max-width: 33svw;
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.btn-container {
+    flex: 1 2 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+button {
+    font: inherit;
+    margin-top: .5rem;
+    padding: .5em 1.5em;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    align-self: center;
+    justify-self: center;
+}
+
+.start-btn {
+    font-size: 1.25rem;
+    margin-top: 0;
+    background-color: var(--secondary-color);
 }
 
 .highlight {
