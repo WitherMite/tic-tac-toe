@@ -4,7 +4,7 @@
     --primary-color: white;
     --secondary-color: lightgrey;
     --hightlight-color: rgb(230, 230, 230);
-    --highlight-border-color: grey;
+    --highlight-outline-color: grey;
     --input-border-color: grey;
     --gridline-color: black;
     --gridline-width: max(1px, .5svh);
@@ -132,7 +132,7 @@ input {
 }
 
 input:focus{
-    outline: 2px solid var(--highlight-border-color);
+    outline: 2px solid var(--highlight-outline-color);
 }
 
 button {
@@ -155,6 +155,6 @@ button {
 }
 
 .highlight {
-    border: var(--gridline-width) solid var(--highlight-border-color);
+    outline: var(--gridline-width) solid var(--highlight-outline-color);
     background-color: var(--hightlight-color);
 }
