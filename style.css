@@ -1,6 +1,8 @@
 :root {
     --primary-color: white;
     --secondary-color: lightgrey;
+    --hightlight-color: rgb(230, 230, 230);
+    --highlight-border-color: grey;
     --gridline-color: black;
     --gridline-width: max(1px, .5svh);
     --tile-color: white;
@@ -63,9 +65,11 @@ body {
 
 .board-border {
     position: absolute;
+    top: -.7svh;
     pointer-events: none;
-    height: 100%;
-    width: 100%;
+    box-sizing: content-box;
+    height: 99%;
+    width: 99%;
     border: max(2px, 1svh) solid var(--secondary-color);
     border-radius: 5%;
 }
@@ -122,5 +126,6 @@ button {
 }
 
 .highlight {
-    outline: solid max(1px, .333svh) yellow;
+    border: var(--gridline-width) solid var(--highlight-border-color);
+    background-color: var(--hightlight-color);
 }
